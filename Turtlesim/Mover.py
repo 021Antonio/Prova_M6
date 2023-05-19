@@ -74,6 +74,7 @@ class Pilha(list):
     def __repr__(self):
         return f"Pilha -> {super().__repr__()}"
 
+F = Pilha(posicoesrota)
 
  
 
@@ -115,13 +116,15 @@ class TurtleController(Node):
         self.publisher.publish(msg)
         #print("self.x_array: ", self.x_array)
         if self.x_array == (len(posicoesrota) - 1):
-            msg.linear.x = 0.0
-            msg.linear.y = 0.0
-            self.get_logger().info("Cheguei no meu destino.")
-            exit()
+            
+            self.pose = Pose(x=msg.x, y=msg.y, theta=msg.theta)
+            self.setpoint.x == F[0][0] and self.setpoint.y == F[0][1]
+            
         else:
             self.x_array += 1
         sleep(2)
+
+            
         
 
         
